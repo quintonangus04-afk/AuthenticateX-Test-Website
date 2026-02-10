@@ -25,5 +25,12 @@ signUpForm.addEventListener('submit', async (event) => {
 
     const signUpResponse = await signUpRequest.json();
 
+    if (signUpResponse.outcome === "success, may proccede to email authentication") {
+        localStorage.setItem("pendingEmail", email)
+        window.location.href = "verify.html"
+    } else {
+        console.log("An unkonwn error has ocoured, sorry about that.")
+    }
+
     console.log(signUpResponse)
 });

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 30px;
+        }
+
+        #logoutBtn {
+            padding: 8px 14px;
+            background: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        #logoutBtn:hover {
+            background: #c0392b;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Welcome to your Dashboard</h1>
+    <p>If you can see this, your token is valid.</p>
+
+    <button id="logoutBtn">Log out</button>
+
+    <script>
+        // ------------------------------
+        // 1. Validate token on page load
+        // ------------------------------
+
+        (async () => {
+            const token = localStorage.getItem("token");
+
+            // No token at all → redirect
+            if (!token) {
+                window.location.href = "login.html";
+                return;
+            }
+
+            const check = await fetch("https://authenticatex-server-main-439442280694.europe-west1.run.app/validateSession", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ token })
+            });
+
+            const data = await check.json();
+
+            if (!data.valid) {
+                // Token invalid → redirect
+                window.location.href = "login.html";
+                return;
+            }
+
+            console.log("Token valid — dashboard unlocked");
+        })();
+
+
+        // ------------------------------
+        // 2. Logout button logic
+        // ------------------------------
+
+        document.getElementById("logoutBtn").addEventListener("click", async () => {
+            const token = localStorage.getItem("token");
+
+            if (token) {
+                await fetch("https://authenticatex-server-main-439442280694.europe-west1.run.app/logout", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ token })
+                });
+            }
+
+            // Clear local storage
+            localStorage.removeItem("token");
+            localStorage.removeItem("pendingEmail");
+
+            // Redirect to login
+            window.location.href = "login.html";
+        });
+    </script>
+
+</body>
+</html>

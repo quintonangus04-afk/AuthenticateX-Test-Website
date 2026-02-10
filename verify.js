@@ -14,7 +14,7 @@ codeInput.addEventListener("keydown", async (e) => {
             })
         })
 
-        const response = verifyCode.json()
+        const response = await verifyCode.json()
 
         if (response.success === "true") {
             console.log("Code verifed successfully")

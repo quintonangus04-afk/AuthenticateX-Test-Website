@@ -25,11 +25,5 @@ signUpForm.addEventListener('submit', async (event) => {
 
     const signUpResponse = await signUpRequest.json();
 
-    if (signUpResponse.success) {
-        console.log("signUp request recieved & successful");
-        localStorage.setItem("pendingeEmail", email);
-        window.location.href = "verify.html";
-    } else {
-        console.log("error within proccessing signUp details, check server logs for more details");
-    }
+    console.log(signUpResponse)
 });

@@ -23,7 +23,7 @@ signUpForm.addEventListener('submit', async (event) => {
         })
     });
 
-    const signUpResponse = await Response.json();
+    const signUpResponse = await signUpRequest.json();
 
     if (signUpResponse.success) {
         console.log("signUp request recieved & successful");

@@ -16,7 +16,7 @@ codeInput.addEventListener("keydown", async (e) => {
 
         const response = await verifyCode.json()
 
-        if (response.success === "true") {
+        if (response.success === true) {
             console.log("Code verifed successfully")
             window.location.href = "dashboard.html"
         } else {

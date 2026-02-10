@@ -25,7 +25,7 @@ signUpForm.addEventListener('submit', async (event) => {
 
     const signUpResponse = await Response.json();
 
-    if (signUpResponse === "success") {
+    if (signUpResponse.success) {
         console.log("signUp request recieved & successful");
         localStorage.setItem("pendingeEmail", email);
         window.location.href = "verify.html";

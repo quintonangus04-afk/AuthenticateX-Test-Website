@@ -18,7 +18,20 @@ codeInput.addEventListener("keydown", async (e) => {
 
         if (response.success === true) {
             console.log("Code verifed successfully")
-            window.location.href = "dashboard.html"
+
+            const tokenGrab = await fetch("https://authenticatex-server-main-439442280694.europe-west1.run.app/token", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({email: email})
+            })
+
+            tokenData = await tokenGrab.json()
+
+            if (tokenData.success) {
+                 localStorage.setItem("token", tokenData.token)
+                 window.location.href = "dashboard.html"
+            }
+
         } else {
             console.log("Unknown error ocoured")
         }

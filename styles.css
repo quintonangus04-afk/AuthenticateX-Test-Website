@@ -1,0 +1,61 @@
+/* Standard styles */
+
+html, body {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#signUpcontainer {
+    color: #141414;
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    height: 800px;
+    width: 600px;
+    box-shadow: 5px 10px 15px rgba(0, 0, 0, 0.3);
+    border-radius: 35px;
+
+}
+
+#signUpForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#signUpText {
+    color: #141414;
+    font-family: sans-serif;
+    font-size: 60px;
+    margin-bottom: 125px;
+}
+
+#emailInput, #passinput {
+    width: 500px;
+    height: 80px;
+    border: #141414 solid 1px;
+    margin: 10px 0 10px 0;
+    padding: 15px;
+    border-radius: 10px;
+    font-family: sans-serif;
+    color: #141414;
+    font-size: 20px;
+}
+
+#submitBtn {
+    width: 500px;
+    height: 50px;
+    color: white;
+    background-color: #141414;
+    border: none;
+    font-family: sans-serif;
+    font-size: 20px;
+    margin-top: 50px;
+    border-radius: 10px;
+}

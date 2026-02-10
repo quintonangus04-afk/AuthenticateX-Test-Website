@@ -26,7 +26,7 @@ signUpForm.addEventListener('submit', async (event) => {
     const raw = await signUpRequest.text();
     console.log("Raw response:", raw);
 
-    // const signUpResponse = await signUpRequest.json();
+    const signUpResponse = await signUpRequest.json();
 
     if (signUpResponse.success) {
         console.log("signUp request recieved & successful");

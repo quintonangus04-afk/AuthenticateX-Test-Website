@@ -8,6 +8,7 @@ html, body {
     align-items: center;
     background-image: url(1.png);
     background-size: cover;
+    background-repeat: no-repeat;
 }
 
 #signUpcontainer {
